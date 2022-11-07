@@ -1,11 +1,25 @@
 import React from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
 import addImage from '../../../src/assets/Images/addImage.png';
+import ServiceCard from '../../Components/serviceCard/ServiceCard';
 
 
 const Home = () => {
+    const services3 = useLoaderData();
+
     return (
         <div className="max-w-screen-xl px-2 mx-auto py-4">
-            <h1>This is Home</h1>
+            <div className='gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-4 pb-8'>
+                {
+                    services3.map((service) => <ServiceCard
+                    key={service._id}
+                    service={service}
+                    ></ServiceCard>)
+                }
+                <Link to='/services'>
+                    <button className='btn'>View All</button>
+                </Link>
+            </div>
 
             <div className="addImage">
                 <img className='rounded' src={addImage} alt="addImage" />
