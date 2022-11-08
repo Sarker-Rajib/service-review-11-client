@@ -17,8 +17,10 @@ const Header = () => {
         {
             user?.email ?
                 <>
+                    <li className='font-semibold text-white'><Link to='/add-service'>Add Service</Link></li>
+                    <li className='font-semibold text-white'><Link to='/my-reviews'>My Reviews</Link></li>
                     <li className='font-semibold text-white'><Link onClick={handleLogout} to='/login'>Logout</Link></li>
-                    <li className='w-24 rounded-full overflow-hidden'><img src={user?.photoURL} alt={user?.displayName} /></li>
+                    <li ><img className='w-20 rounded-2xl' src={user?.photoURL} alt={user?.displayName} /></li>
                 </>
                 :
                 <li className='font-semibold text-white'><Link to='/login'>Login</Link></li>
