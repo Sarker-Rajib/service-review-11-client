@@ -2,6 +2,7 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import ReviewCard from '../ReviewCard/ReviewCard';
 
 const DisplayService = () => {
     const service = useLoaderData();
@@ -30,7 +31,8 @@ const DisplayService = () => {
                 </div>
             </div>
             <div className="lg:max-w-screen-lg mt-2 px-2 mx-auto py-4 bg-cyan-100 rounded-lg">
-                <h2 className='text-center text-3xl text-slate-600'>Reviews</h2>
+                <h2 className='pb-2 text-center text-3xl text-slate-600'>Reviews</h2>
+                <ReviewCard></ReviewCard>
             </div>
             <div className="lg:max-w-screen-lg mt-2 px-2 mx-auto py-4 bg-cyan-100 rounded-lg">
                 <h2 className='text-2xl text-slate-600 pb-2'>Give Your review</h2>
