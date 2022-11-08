@@ -1,6 +1,9 @@
 import React from 'react';
+import useTitle from '../../Hooks/UseTitle/UseTitle';
 
 const Blog = () => {
+    useTitle('Fx || Blog');
+
     return (
         <div className="max-w-screen-xl mx-auto py-4">
             <div className="bg-base-200 p-2">

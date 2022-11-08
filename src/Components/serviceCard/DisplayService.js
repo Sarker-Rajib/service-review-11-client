@@ -4,8 +4,10 @@ import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import { AuthContext } from '../../Context/AuthProvider';
+import useTitle from '../../Hooks/UseTitle/UseTitle';
 
 const DisplayService = () => {
+    useTitle('Fx || Service Details');
     const { user } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
     const [viewDependency, setviewDependency] = useState([]);
@@ -22,6 +24,7 @@ const DisplayService = () => {
         const comment = form.comment.value;
 
         const AReview = {
+            serviceName: serviceName,
             name,
             photoURL,
             email,

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MyReviewCard = ({ review }) => {
-    const { name, photoURL, comment, serviceId } = review;
+    const { name, photoURL, comment, serviceId, serviceName } = review;
 
     return (
         <div className='bg-slate-400 p-3 rounded-md text-white'>
@@ -14,6 +14,7 @@ const MyReviewCard = ({ review }) => {
                 </div>
             </div>
             <div className="comment">
+                <h3 className='text-2xl'>Service : {serviceName}</h3>
                 <p>{comment}</p>
             </div>
             <div className='flex justify-between'>

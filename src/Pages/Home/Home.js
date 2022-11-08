@@ -2,10 +2,12 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import addImage from '../../../src/assets/Images/addImage.png';
 import ServiceCard from '../../Components/serviceCard/ServiceCard';
+import useTitles from '../../Hooks/UseTitle/UseTitle';
 
 
 const Home = () => {
     const services3 = useLoaderData();
+    useTitles('Fx || Home')
 
     return (
         <div className="max-w-screen-xl px-2 mx-auto py-4">
