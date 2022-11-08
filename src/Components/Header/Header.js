@@ -28,7 +28,7 @@ const Header = () => {
     </>
 
     return (
-        <div className="bg-purple-500">
+        <div className="bg-green-600">
             <div className="max-w-screen-xl mx-auto">
                 <div className="navbar">
                     <div className="navbar-start">
