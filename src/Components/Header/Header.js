@@ -1,13 +1,27 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../../../src/assets/Images/full-logo.png';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logOut();
+    };
+
     const menuItems = <>
         <li className='font-semibold text-white lg:mr-2'><Link to='/'>Home</Link></li>
         <li className='font-semibold text-white'><Link to='/blog'>Blog</Link></li>
         {
-            <li className='font-semibold text-white'><Link to='/login'>Login</Link></li>
+            user?.email ?
+                <>
+                    <li className='font-semibold text-white'><Link onClick={handleLogout} to='/login'>Logout</Link></li>
+                    <li className='w-24 rounded-full overflow-hidden'><img src={user?.photoURL} alt={user?.displayName} /></li>
+                </>
+                :
+                <li className='font-semibold text-white'><Link to='/login'>Login</Link></li>
         }
     </>
 
