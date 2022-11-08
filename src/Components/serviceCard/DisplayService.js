@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
@@ -7,15 +7,53 @@ import { AuthContext } from '../../Context/AuthProvider';
 
 const DisplayService = () => {
     const { user } = useContext(AuthContext);
+    const [reviews, setReviews] = useState([]);
     const service = useLoaderData();
     const { img, serviceName, description, price, serviseId } = service;
 
-    console.log(service);
-    const handleCommentSubmit = () => {
+    // console.log(service);
+    const handleCommentSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const serviceId = form.serviceId.value;
+        const comment = form.comment.value;
 
+        const AReview = {
+            name,
+            photoURL,
+            email,
+            serviceId,
+            comment
+        }
+
+        fetch('http://localhost:5000/reviews', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(AReview)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged === true) {
+                    alert('data added successfully')
+                    form.reset();
+                }
+            })
     };
 
-    
+    useEffect(() => {
+        fetch('http://localhost:5000/reviews')
+            .then(res => res.json())
+            .then(data => {
+                // console.log(data);
+                setReviews(data);
+            })
+    }, [reviews])
 
     return (
         <div className='py-4'>
@@ -37,7 +75,14 @@ const DisplayService = () => {
             </div>
             <div className="lg:max-w-screen-lg mt-2 px-2 mx-auto py-4 bg-cyan-100 rounded-lg">
                 <h2 className='pb-2 text-center text-3xl text-slate-600'>Reviews</h2>
-                <ReviewCard></ReviewCard>
+                <div className="grid gap-2 md:grid-cols-2">
+                    {
+                        reviews.map(review => <ReviewCard
+                            key={review._id}
+                            review={review}
+                        ></ReviewCard>)
+                    }
+                </div>
             </div>
             <div className="lg:max-w-screen-lg mt-2 px-2 mx-auto py-4 bg-cyan-100 rounded-lg">
                 <h2 className='text-2xl text-slate-600 pb-2'>Give Your review</h2>
@@ -47,19 +92,19 @@ const DisplayService = () => {
                             <div className='grid grid-cols-1 lg:grid-cols-2'>
                                 <div className='p-2'>
                                     <label>Name</label>
-                                    <input className='w-full p-2 rounded' type="text" defaultValue={user?.displayName} readOnly />
+                                    <input name='name' className='w-full p-2 rounded' type="text" defaultValue={user?.displayName} readOnly />
                                 </div>
                                 <div className='p-2'>
                                     <label>photoURL</label>
-                                    <input className='w-full p-2 rounded' type="text" defaultValue={user?.photoURL} readOnly />
+                                    <input name='photoURL' className='w-full p-2 rounded' type="text" defaultValue={user?.photoURL} readOnly />
                                 </div>
                                 <div className='p-2'>
                                     <label>Email</label>
-                                    <input className='w-full p-2 rounded' type="email" defaultValue={user?.email} readOnly />
+                                    <input name='email' className='w-full p-2 rounded' type="email" defaultValue={user?.email} readOnly />
                                 </div>
                                 <div className='p-2'>
                                     <label>Service id</label>
-                                    <input className='w-full p-2 rounded' type="text" defaultValue={serviseId} readOnly />
+                                    <input name='serviceId' className='w-full p-2 rounded' type="text" defaultValue={serviseId} readOnly />
                                 </div>
                             </div>
                             <label>Write Your Comment below</label>
