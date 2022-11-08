@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Login = () => {
-    const { providerLogin } = useContext(AuthContext);
+    const { providerLogin, logIn } = useContext(AuthContext);
 
     // google login
     const googleProvider = new GoogleAuthProvider();
@@ -19,11 +19,24 @@ const Login = () => {
             });
     }
 
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        logIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+    }
+
     return (
         <div className='py-4'>
             <div className="lg:max-w-screen-sm px-2 mx-auto py-4 bg-pink-400 rounded">
                 <h2 className="text-4xl text-center text-white pb-4">Login</h2>
-                <form>
+                <form onSubmit={handleLogin}>
                     <div className='pb-2'>
                         <label className='text-white'>Email</label>
                         <input name='email' type="text" placeholder="enter email" className="input w-full" />
