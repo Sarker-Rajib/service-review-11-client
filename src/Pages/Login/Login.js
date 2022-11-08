@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Login = () => {
-    const { user, providerLogin } = useContext(AuthContext);
+    const { providerLogin } = useContext(AuthContext);
 
     // google login
     const googleProvider = new GoogleAuthProvider();

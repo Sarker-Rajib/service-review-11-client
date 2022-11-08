@@ -2,8 +2,9 @@ import React from 'react';
 
 const MyReviews = () => {
     return (
-        <div>
-            
+        <div className="max-w-screen-xl px-2 mx-auto py-4">
+
+            this is my review
         </div>
     );
 };

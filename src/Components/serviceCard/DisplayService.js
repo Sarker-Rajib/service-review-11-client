@@ -8,10 +8,10 @@ import { AuthContext } from '../../Context/AuthProvider';
 const DisplayService = () => {
     const { user } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
+    const [viewDependency, setviewDependency] = useState([]);
     const service = useLoaderData();
     const { img, serviceName, description, price, serviceId } = service;
 
-    console.log(service);
     const handleCommentSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -42,6 +42,7 @@ const DisplayService = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged === true) {
+                    setviewDependency(data)
                     alert('data added successfully')
                     form.reset();
                 }
@@ -57,7 +58,7 @@ const DisplayService = () => {
                 // console.log(data);
                 setReviews(data);
             })
-    }, [serviceId])
+    }, [viewDependency, serviceId])
 
     return (
         <div className='py-4'>

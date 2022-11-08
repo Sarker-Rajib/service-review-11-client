@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../../../src/assets/Images/full-logo.png';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleLogout = () => {
         logOut();
