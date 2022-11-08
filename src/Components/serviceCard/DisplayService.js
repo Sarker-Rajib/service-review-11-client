@@ -9,9 +9,9 @@ const DisplayService = () => {
     const { user } = useContext(AuthContext);
     const [reviews, setReviews] = useState([]);
     const service = useLoaderData();
-    const { img, serviceName, description, price, serviseId } = service;
+    const { img, serviceName, description, price, serviceId } = service;
 
-    // console.log(service);
+    console.log(service);
     const handleCommentSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -28,6 +28,8 @@ const DisplayService = () => {
             serviceId,
             comment
         }
+
+        console.log(AReview);
 
         fetch('http://localhost:5000/reviews', {
             method: 'POST',
@@ -46,14 +48,16 @@ const DisplayService = () => {
             })
     };
 
+    // orders?email=${uEmail}
+
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch(`http://localhost:5000/reviews?serviceId=${serviceId}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
                 setReviews(data);
             })
-    }, [reviews])
+    }, [serviceId])
 
     return (
         <div className='py-4'>
@@ -104,7 +108,7 @@ const DisplayService = () => {
                                 </div>
                                 <div className='p-2'>
                                     <label>Service id</label>
-                                    <input name='serviceId' className='w-full p-2 rounded' type="text" defaultValue={serviseId} readOnly />
+                                    <input name='serviceId' className='w-full p-2 rounded' type="text" defaultValue={serviceId} readOnly />
                                 </div>
                             </div>
                             <label>Write Your Comment below</label>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ReviewCard = ({ review }) => {
-    const { name, photoURL, email, serviceId, comment } = review;
+    const { name, photoURL, comment } = review;
     return (
         <div className='bg-amber-600 p-3 rounded-md text-white'>
             <div className='flex align-middle'>
