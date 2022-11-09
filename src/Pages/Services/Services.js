@@ -1,13 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ServiceCard from '../../Components/serviceCard/ServiceCard';
-import { AuthContext } from '../../Context/AuthProvider';
 import useTitle from '../../Hooks/UseTitle/UseTitle';
 
 const Services = () => {
     useTitle('Fx || Services');
 
-    const {setLoading} = useContext(AuthContext);
+    // const {setLoading} = useContext(AuthContext);
     const allServices = useLoaderData();
 
     return (

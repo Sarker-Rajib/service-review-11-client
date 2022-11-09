@@ -5,7 +5,17 @@ import useTitle from '../../Hooks/UseTitle/UseTitle';
 
 const Register = () => {
     useTitle('Fx || Register')
-    const { createUser, setLoading } = useContext(AuthContext);
+    const { createUser, setLoading, updateUserProfile } = useContext(AuthContext);
+
+    const handleUpdateProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+        .then(() => {})
+        .catch(err => console.error(err))
+    };
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -18,8 +28,9 @@ const Register = () => {
         // console.log(name, photoURL, email, password);
         createUser(email, password)
             .then((result) => {
-                const user = result.user;
-                // console.log(user);
+                // const user = result.user;
+                form.reset();
+                handleUpdateProfile(name, photoURL)
             })
             .catch(err => console.error(err))
             .finally(() => {

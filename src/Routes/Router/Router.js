@@ -3,6 +3,7 @@ import DisplayService from "../../Components/serviceCard/DisplayService";
 import Main from "../../Layouts/Main/Main";
 import AddService from "../../Pages/AddService/AddService";
 import Blog from "../../Pages/Blog/Blog";
+import EditReview from "../../Pages/EditReview/EditReview";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import MyReviews from "../../Pages/MyReviews/MyReviews";
@@ -46,6 +47,14 @@ export const router = createBrowserRouter([
                 element:
                     <PrivateRoute>
                         <MyReviews></MyReviews>
+                    </PrivateRoute>
+            },
+            {
+                path: "/my-reviews/:id",
+                loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`),
+                element:
+                    <PrivateRoute>
+                        <EditReview></EditReview>
                     </PrivateRoute>
             },
             {

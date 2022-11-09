@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MyReviewCard = ({ review, handleReviwDelete }) => {
     const { name, photoURL, comment, serviceId, serviceName, _id } = review;
+    // console.log(comment);
 
     return (
         <div className='bg-slate-400 p-3 rounded-md text-white'>
@@ -13,7 +15,7 @@ const MyReviewCard = ({ review, handleReviwDelete }) => {
                     <h2 className='text-2xl text-pink-100'>{name}</h2>
                 </div>
             </div>
-            <div className="comment">
+            <div >
                 <h3 className='text-2xl'>Service : {serviceName}</h3>
                 <p>{comment}</p>
             </div>
@@ -22,7 +24,9 @@ const MyReviewCard = ({ review, handleReviwDelete }) => {
                 <p>Service Id : {serviceId}</p>
             </div>
             <div className='flex justify-end'>
-                <button className='btn px-4'>Edit Review</button>
+                <Link to={`/my-reviews/${_id}`}>
+                    <button className="btn">Edit Review</button>
+                </Link>
                 <span className='mx-2'></span>
                 <button onClick={() => handleReviwDelete(_id)} className='btn px-4'>Delete</button>
             </div>
