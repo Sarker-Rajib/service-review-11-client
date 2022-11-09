@@ -5,7 +5,7 @@ server site code link
 
 This  is simple demo project about some services that are in same i category.
 
-* Home page : you will find a a navbar, some display services, benner, about us, , contact us, footer sections.
+* Home page : you will find a navbar, some display services, benner, about us, , contact us, footer sections.
 * Below the display services you will find a see all button. you can see all the services when you click on that button.
 * On navbar you will find Home , blog , and login button.
 * If you log in you will find more two buttons - 1. Add services and My reviews.
