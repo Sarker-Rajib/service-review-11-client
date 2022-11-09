@@ -32,7 +32,6 @@ const DisplayService = () => {
             comment
         }
 
-        console.log(AReview);
 
         fetch('http://localhost:5000/reviews', {
             method: 'POST',
@@ -43,7 +42,6 @@ const DisplayService = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.acknowledged === true) {
                     setviewDependency(data)
                     alert('data added successfully')
@@ -58,7 +56,6 @@ const DisplayService = () => {
         fetch(`http://localhost:5000/reviews?serviceId=${serviceId}`)
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
                 setReviews(data);
             })
     }, [viewDependency, serviceId])

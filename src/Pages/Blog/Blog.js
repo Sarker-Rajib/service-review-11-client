@@ -25,17 +25,17 @@ const Blog = () => {
                         <br />
                         <br />
                         Basically the identity provider(IdP) generates a JWT certifying user identity and Resource server decodes and verifies the authenticity of the token using secret salt / public key.
-
-                        <div className='flex py-2 justify-center'>
-                            <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--paCGhFRY--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/tppls6i2nbdqevr2nybr.png" alt="img" />
-                        </div>
-                        <ul>
-                            <li> - User sign-in using username and password or google/facebook.</li>
-                            <li> - Authentication server verifies the credentials and issues a jwt signed using either a secret salt or a private key.</li>
-                            <li> - User's Client uses the JWT to access protected resources by passing the JWT in HTTP Authorization header.</li>
-                            <li> - Resource server then verifies the authenticity of the token using the secret salt/ public key.</li>
-                        </ul>
                     </p>
+                    <div className='flex py-2 justify-center'>
+                        <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--paCGhFRY--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/tppls6i2nbdqevr2nybr.png" alt="img" />
+                    </div>
+                    <ul>
+                        <li> - User sign-in using username and password or google/facebook.</li>
+                        <li> - Authentication server verifies the credentials and issues a jwt signed using either a secret salt or a private key.</li>
+                        <li> - User's Client uses the JWT to access protected resources by passing the JWT in HTTP Authorization header.</li>
+                        <li> - Resource server then verifies the authenticity of the token using the secret salt/ public key.</li>
+                    </ul>
+
                 </div>
                 <div className="bg-cyan-200 p-2 rounded-xl mb-2">
                     <h1 className="text-1xl font-bold">Q3. What are the difference between node js and javascript ?</h1>

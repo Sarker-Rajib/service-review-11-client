@@ -2,7 +2,7 @@ import React from 'react';
 
 const ReviewCard = ({ review }) => {
     const { name, photoURL, comment } = review;
-    console.log(review);
+    // console.log(review);
     return (
         <div className='bg-slate-400 p-3 rounded-md text-white'>
             <div style={{alignItems:"end"}} className='flex align-middle border-b-2 pb-2'>

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const MyReviewCard = ({ review }) => {
-    const { name, photoURL, comment, serviceId, serviceName } = review;
+const MyReviewCard = ({ review, handleReviwDelete }) => {
+    const { name, photoURL, comment, serviceId, serviceName, _id } = review;
 
     return (
         <div className='bg-slate-400 p-3 rounded-md text-white'>
@@ -22,7 +22,9 @@ const MyReviewCard = ({ review }) => {
                 <p>Service Id : {serviceId}</p>
             </div>
             <div className='flex justify-end'>
-                <button className='btn px-4'>Delete</button>
+                <button className='btn px-4'>Edit Review</button>
+                <span className='mx-2'></span>
+                <button onClick={() => handleReviwDelete(_id)} className='btn px-4'>Delete</button>
             </div>
         </div>
     );
