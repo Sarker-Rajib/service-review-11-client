@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import useTitle from '../../Hooks/UseTitle/UseTitle';
 
 const Register = () => {
+    useTitle('Fx || Register')
     const { createUser } = useContext(AuthContext);
 
     const handleRegister = (e) => {
@@ -24,28 +26,28 @@ const Register = () => {
 
     return (
         <div className='py-4'>
-            <div className="lg:max-w-screen-sm px-2 mx-auto py-4 bg-pink-400 rounded">
-                <h2 className="text-4xl text-center text-white pb-4">Register</h2>
+            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bordered rounded-lg bg-base-100 px-3 mx-auto py-4">
+                <h2 className="text-4xl text-center  pb-4">Register</h2>
                 <form onSubmit={handleRegister}>
                     <div className='pb-2'>
-                        <label className='text-white'>Full Name</label>
-                        <input name='name' type="text" placeholder="enter your name" className="input w-full" />
+                        <label>Full Name</label>
+                        <input name='name' type="text" placeholder="enter your name" className="input w-full input-bordered" />
                     </div>
                     <div className='pb-2'>
-                        <label className='text-white'>Photo URL</label>
-                        <input name='photoURL' type="text" placeholder="enter photoURL" className="input w-full" />
+                        <label>Photo URL</label>
+                        <input name='photoURL' type="text" placeholder="enter photoURL" className="input w-full input-bordered" />
                     </div>
                     <div className='pb-2'>
-                        <label className='text-white'>Email</label>
-                        <input name='email' type="text" placeholder="enter email" className="input w-full" />
+                        <label>Email</label>
+                        <input name='email' type="text" placeholder="enter email" className="input w-full input-bordered" />
                     </div>
                     <div className='pb-8'>
-                        <label className='text-white'>Password</label>
-                        <input name='password' type="password" placeholder="enter password" className="input w-full" />
+                        <label>Password</label>
+                        <input name='password' type="password" placeholder="enter password" className="input w-full input-bordered" />
                     </div>
                     <input className='btn w-full' type="Submit" />
                 </form>
-                <p className='pt-4 text-white'>Already Registered ? <Link to='/login' className='text-cyan-200'>Please Login</Link></p>
+                <p className='pt-4 '>Already Registered ? <Link to='/login' className='text-purple-600'>Please Login</Link></p>
             </div>
         </div>
     );

@@ -3,6 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import addImage from '../../../src/assets/Images/addImage.png';
 import ServiceCard from '../../Components/serviceCard/ServiceCard';
 import useTitles from '../../Hooks/UseTitle/UseTitle';
+import AboutUs from './AboutUs';
 
 
 const Home = () => {
@@ -24,6 +25,8 @@ const Home = () => {
                     <button className='btn px-12'>View All</button>
                 </Link>
             </div>
+            
+            <AboutUs></AboutUs>
 
             <div className="addImage">
                 <img className='rounded' src={addImage} alt="addImage" />
