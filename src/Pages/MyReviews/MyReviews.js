@@ -38,18 +38,26 @@ const MyReviews = () => {
     return (
         <div className="max-w-screen-xl px-2 mx-auto py-4">
 
-            <div className="grid gap-2 md:grid-cols-2">
+            {
+                myComments.length <= 0 ?
 
-                {
-                    myComments.map(review => <MyReviewCard
-                        key={review._id}
-                        review={review}
-                        handleReviwDelete={handleReviwDelete}
-                    ></MyReviewCard>)
-                }
+                    <div style={{ minHeight: '400px' }} className="flex items-center justify-center w-full">
+                        <div className='text-center'>
+                            <p className='text-red-600'>No reviews were added</p>
+                            <h2 className='text-4xl text-amber-400'>You have no review to show</h2>
+                            <p className='text-green-600'>Please give a review to see</p>
+                        </div>
+                    </div>
 
-            </div>
-
+                    :
+                    <div className="grid gap-2 md:grid-cols-2">
+                        {myComments.map(review => <MyReviewCard
+                            key={review._id}
+                            review={review}
+                            handleReviwDelete={handleReviwDelete}
+                        ></MyReviewCard>)}
+                    </div>
+            }
         </div>
     );
 };

@@ -5,7 +5,7 @@ import useTitle from '../../Hooks/UseTitle/UseTitle';
 
 const Register = () => {
     useTitle('Fx || Register')
-    const { createUser } = useContext(AuthContext);
+    const { createUser, setLoading } = useContext(AuthContext);
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -22,6 +22,9 @@ const Register = () => {
                 // console.log(user);
             })
             .catch(err => console.error(err))
+            .finally(() => {
+                setLoading(false);
+             })
     };
 
     return (

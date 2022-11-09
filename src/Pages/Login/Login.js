@@ -6,7 +6,7 @@ import useTitle from '../../Hooks/UseTitle/UseTitle';
 
 const Login = () => {
     useTitle('Fx || Login');
-    const { providerLogin, logIn } = useContext(AuthContext);
+    const { providerLogin, logIn, setLoading } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from.pathname || '/';
@@ -18,7 +18,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);
@@ -36,9 +36,12 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
             })
             .catch(err => console.error(err))
+            .finally(() => {
+                setLoading(false);
+            })
     }
 
     return (

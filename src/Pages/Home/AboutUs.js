@@ -1,10 +1,10 @@
 import React from 'react';
 import about from './../../assets/Images/about.png';
 
-const AvoutUs = () => {
+const AboutUs = () => {
     return (
         <div className=' bg-slate-200 my-3 p-2 rounded-xl'>
-            <h1 className='text-4xl text-center py-2'>Abou Us</h1>
+            <h1 className='text-4xl text-center py-6'>About Us</h1>
 
             <div className="grid gap-2 grid-cols-1 lg:grid-cols-2">
                 <div className="card text-white bg-cyan-300 rounded-box p-4">
@@ -24,4 +24,4 @@ const AvoutUs = () => {
     );
 };
 
-export default AvoutUs;
+export default AboutUs;
