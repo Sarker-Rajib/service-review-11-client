@@ -18,9 +18,29 @@ const Login = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
+
                 navigate(from, { replace: true })
                 alert('login successful')
+                const currentUserMail = {
+                    email: user.email
+                }
+
+                // jtoken fetch
+                fetch('http://localhost:5000/jwtToken', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUserMail)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+
+                        localStorage.setItem('jtoken', data.securityToken)
+                        navigate(from, { replace: true });
+                    })
             })
             .catch(error => {
                 console.log(error);
@@ -39,7 +59,26 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 alert('Login Successful');
-                navigate(from, { replace: true })
+
+                const currentUserMail = {
+                    email: user.email
+                }
+
+                // jtoken fetch
+                fetch('http://localhost:5000/jwtToken', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUserMail)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+
+                        localStorage.setItem('jtoken', data.securityToken)
+                        navigate(from, { replace: true });
+                    })
             })
             .catch(err => {
                 console.error(err)

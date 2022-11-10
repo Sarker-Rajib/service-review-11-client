@@ -14,7 +14,7 @@ const EditReview = () => {
             comment: updatedComment
         }
 
-        fetch(`https://assignment-11-server-dusky.vercel.app/reviews/${_id}`, {
+        fetch(`http://localhost:5000/reviews/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

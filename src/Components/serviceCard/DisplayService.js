@@ -5,7 +5,6 @@ import 'react-photo-view/dist/react-photo-view.css';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import { AuthContext } from '../../Context/AuthProvider';
 import useTitle from '../../Hooks/UseTitle/UseTitle';
-import { toast } from 'react-toastify';
 
 const DisplayService = () => {
     useTitle('Fx || Service Details');
@@ -35,7 +34,7 @@ const DisplayService = () => {
 
         console.log(AReview);
 
-        fetch('https://assignment-11-server-dusky.vercel.app/reviews', {
+        fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -55,7 +54,7 @@ const DisplayService = () => {
     // orders?email=${uEmail}
 
     useEffect(() => {
-        fetch(`https://assignment-11-server-dusky.vercel.app/reviews?serviceId=${serviceId}`)
+        fetch(`http://localhost:5000/reviews?serviceId=${serviceId}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data);
@@ -84,7 +83,7 @@ const DisplayService = () => {
                 <h2 className='pb-2 text-center text-3xl text-slate-600'>Reviews</h2>
                 <div className="grid gap-2 md:grid-cols-2">
                     {
-                        reviews.map(review => <ReviewCard
+                        reviews?.map(review => <ReviewCard
                             key={review._id}
                             review={review}
                         ></ReviewCard>)

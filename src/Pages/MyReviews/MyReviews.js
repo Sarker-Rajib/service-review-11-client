@@ -4,24 +4,33 @@ import useTitle from '../../Hooks/UseTitle/UseTitle';
 import MyReviewCard from './MyReviewCard';
 
 const MyReviews = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [myComments, setMyComments] = useState([]);
     const [hit, setHit] = useState();
     useTitle('Fx || My Reviews');
 
     useEffect(() => {
-        fetch(`https://assignment-11-server-dusky.vercel.app/reviews?email=${user?.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/my-reviews?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('jtoken')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    logOut();
+                }
+                return res.json()
+            })
             .then(data => {
                 setMyComments(data);
             })
-    }, [user?.email, hit])
+    }, [user?.email, logOut, hit])
 
     const handleReviwDelete = (id) => {
         const proceed = window.confirm('Do you really want to delete ?');
         console.log(id);
         if (proceed) {
-            fetch(`https://assignment-11-server-dusky.vercel.app/reviews/${id}`, {
+            fetch(`http://localhost:5000/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
