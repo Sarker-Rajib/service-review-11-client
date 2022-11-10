@@ -3,11 +3,11 @@ import about from './../../assets/Images/about.png';
 
 const AboutUs = () => {
     return (
-        <div className=' bg-slate-200 my-3 p-2 rounded-xl'>
+        <div className=' bg-slate-200 my-3 p-4 rounded-xl'>
             <h1 className='text-4xl text-center py-6'>About Us</h1>
 
             <div className="grid gap-2 grid-cols-1 lg:grid-cols-2">
-                <div className="card text-white bg-cyan-300 rounded-box p-4">
+                <div className="card bg-cyan-300 rounded-box p-8">
                     <p className='text-3xl'>Welcome !</p>
                     <p className='text-xl'>We are group of transporter!</p>
                     <p className='text-xl'>We care for your needs, your product values and your emotions. so, we are here to stand beside you to save your time </p>

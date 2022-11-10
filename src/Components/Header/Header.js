@@ -16,13 +16,13 @@ const Header = () => {
 
     const menuItems = <>
         <li className='font-semibold text-white lg:mr-2'><Link to='/'>Home</Link></li>
-        <li className='font-semibold text-white'><Link to='/blog'>Blog</Link></li>
-        <li className='font-semibold text-white'><Link to='/services'>Services</Link></li>
+        <li className='font-semibold text-white lg:mr-2'><Link to='/blog'>Blog</Link></li>
+        <li className='font-semibold text-white lg:mr-2'><Link to='/services'>Services</Link></li>
         {
             user?.email ?
                 <>
-                    <li className='font-semibold text-white'><Link to='/add-service'>Add Service</Link></li>
-                    <li className='font-semibold text-white'><Link to='/my-reviews'>My Reviews</Link></li>
+                    <li className='font-semibold text-white lg:mr-2'><Link to='/add-service'>Add Service</Link></li>
+                    <li className='font-semibold text-white lg:mr-2'><Link to='/my-reviews'>My Reviews</Link></li>
                     <li className='font-semibold text-white'><Link onClick={handleLogout} to='/login'>Logout</Link></li>
                     <li ><img className='w-20 rounded-2xl' src={user?.photoURL} alt={user?.displayName} /></li>
                 </>

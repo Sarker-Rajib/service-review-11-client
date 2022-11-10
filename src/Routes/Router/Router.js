@@ -11,6 +11,7 @@ import Register from "../../Pages/Register/Register";
 import Services from "../../Pages/Services/Services";
 import PrivateRoute from "../PrivateRoutes/PrivateRoute";
 
+
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -19,17 +20,16 @@ export const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/services3')
+                loader: () => fetch('https://assignment-11-server-dusky.vercel.app/services3')
             },
             {
                 path: "/services",
                 element: <Services></Services>,
-                loader: () => fetch('http://localhost:5000/services')
             },
             {
                 path: "/services/:id",
                 element: <DisplayService></DisplayService>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-11-server-dusky.vercel.app/services/${params.id}`)
             },
             {
                 path: "/blog",
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/my-reviews/:id",
-                loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`),
+                loader: ({ params }) => fetch(`https://assignment-11-server-dusky.vercel.app/reviews/${params.id}`),
                 element:
                     <PrivateRoute>
                         <EditReview></EditReview>

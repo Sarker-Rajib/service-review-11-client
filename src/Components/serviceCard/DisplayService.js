@@ -17,23 +17,23 @@ const DisplayService = () => {
     const handleCommentSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
-        const photoURL = form.photoURL.value;
-        const email = form.email.value;
-        const serviceId = form.serviceId.value;
         const comment = form.comment.value;
+        if(user){
+
+        }
 
         const AReview = {
             serviceName: serviceName,
-            name,
-            photoURL,
-            email,
-            serviceId,
+            name: user?.displayName,
+            photoURL: user?.photoURL,
+            email: user?.email,
+            serviceId: serviceId,
             comment
         }
 
+        console.log(AReview);
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://assignment-11-server-dusky.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ const DisplayService = () => {
     // orders?email=${uEmail}
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?serviceId=${serviceId}`)
+        fetch(`https://assignment-11-server-dusky.vercel.app/reviews?serviceId=${serviceId}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data);
@@ -95,21 +95,14 @@ const DisplayService = () => {
                     user ?
                         <form onSubmit={handleCommentSubmit}>
                             <div className='grid grid-cols-1 lg:grid-cols-2'>
-                                <div className='p-2'>
-                                    <label>Name</label>
-                                    <input name='name' className='w-full p-2 rounded' type="text" defaultValue={user?.displayName} readOnly />
+                                <div className='p-1'>
+                                    <h1>Name : <span>{user?.displayName}</span></h1>
                                 </div>
-                                <div className='p-2'>
-                                    <label>photoURL</label>
-                                    <input name='photoURL' className='w-full p-2 rounded' type="text" defaultValue={user?.photoURL} readOnly />
+                                <div className='p-1'>
+                                    <h2>Email : <span>{user?.email}</span></h2>
                                 </div>
-                                <div className='p-2'>
-                                    <label>Email</label>
-                                    <input name='email' className='w-full p-2 rounded' type="email" defaultValue={user?.email} readOnly />
-                                </div>
-                                <div className='p-2'>
-                                    <label>Service id</label>
-                                    <input name='serviceId' className='w-full p-2 rounded' type="text" defaultValue={serviceId} readOnly />
+                                <div className='p-1'>
+                                    <p>Service id: {serviceId}</p>
                                 </div>
                             </div>
                             <label>Write Your Comment below</label>

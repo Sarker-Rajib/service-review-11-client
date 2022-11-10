@@ -10,7 +10,7 @@ const MyReviews = () => {
     useTitle('Fx || My Reviews');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
+        fetch(`https://assignment-11-server-dusky.vercel.app/reviews?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyComments(data);
@@ -21,7 +21,7 @@ const MyReviews = () => {
         const proceed = window.confirm('Do you really want to delete ?');
         console.log(id);
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://assignment-11-server-dusky.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
