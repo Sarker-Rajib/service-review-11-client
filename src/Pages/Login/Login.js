@@ -21,7 +21,6 @@ const Login = () => {
                 // console.log(user);
 
                 navigate(from, { replace: true })
-                alert('login successful')
                 const currentUserMail = {
                     email: user.email
                 }
@@ -41,6 +40,7 @@ const Login = () => {
                         localStorage.setItem('jtoken', data.securityToken)
                         navigate(from, { replace: true });
                     })
+                alert('login successful')
             })
             .catch(error => {
                 console.log(error);

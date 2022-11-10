@@ -35,6 +35,7 @@ const AuthProvider = ({ children }) => {
 
     // logOut
     const logOut = () => {
+        localStorage.removeItem('jtoken')
         return signOut(auth);
     };
 

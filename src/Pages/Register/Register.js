@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import useTitle from '../../Hooks/UseTitle/UseTitle';
 
 const Register = () => {
     useTitle('Fx || Register')
     const { createUser, setLoading, updateUserProfile } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location?.state?.from.pathname || '/';
 
     const handleUpdateProfile = (name, photoURL) => {
         const profile = {
@@ -28,10 +31,31 @@ const Register = () => {
         // console.log(name, photoURL, email, password);
         createUser(email, password)
             .then((result) => {
-                // const user = result.user;
+                const user = result.user;
                 form.reset();
                 handleUpdateProfile(name, photoURL)
                 alert('Successfully Registered');
+
+                const currentUserMail = {
+                    email: user.email
+                }
+
+                // jtoken fetch
+                // i just want to give a token during registration
+                fetch('https://assignment-11-server-dusky.vercel.app/jwtToken', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUserMail)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+
+                        localStorage.setItem('jtoken', data.securityToken)
+                        navigate(from, { replace: true });
+                    })
             })
             .catch(err => console.error(err))
             .finally(() => {
