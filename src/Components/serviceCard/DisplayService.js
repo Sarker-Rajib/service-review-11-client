@@ -19,9 +19,9 @@ const DisplayService = () => {
         e.preventDefault();
         const form = e.target;
         const comment = form.comment.value;
-        if(user){
 
-        }
+        const dateTime = new Date();
+        let dateAndTime = dateTime.toISOString();
 
         const AReview = {
             serviceName: serviceName,
@@ -29,6 +29,7 @@ const DisplayService = () => {
             photoURL: user?.photoURL,
             email: user?.email,
             serviceId: serviceId,
+            commentedAt: dateAndTime,
             comment
         }
 
