@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/services3')
+                loader: () => fetch('https://assignment-11-server-dusky.vercel.app/services3')
             },
             {
                 path: "/services",
@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
             {
                 path: "/services/:id",
                 element: <DisplayService></DisplayService>,
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-11-server-dusky.vercel.app/services/${params.id}`)
             },
             {
                 path: "/blog",
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/my-reviews/:id",
-                loader: ({ params }) => fetch(`http://localhost:5000/reviews/${params.id}`),
+                loader: ({ params }) => fetch(`https://assignment-11-server-dusky.vercel.app/reviews/${params.id}`),
                 element:
                     <PrivateRoute>
                         <EditReview></EditReview>

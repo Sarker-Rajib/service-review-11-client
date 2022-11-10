@@ -34,7 +34,7 @@ const DisplayService = () => {
 
         console.log(AReview);
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://assignment-11-server-dusky.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ const DisplayService = () => {
     // orders?email=${uEmail}
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?serviceId=${serviceId}`)
+        fetch(`https://assignment-11-server-dusky.vercel.app/reviews?serviceId=${serviceId}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data);

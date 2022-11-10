@@ -27,7 +27,7 @@ const Login = () => {
                 }
 
                 // jtoken fetch
-                fetch('http://localhost:5000/jwtToken', {
+                fetch('https://assignment-11-server-dusky.vercel.app/jwtToken', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -65,7 +65,7 @@ const Login = () => {
                 }
 
                 // jtoken fetch
-                fetch('http://localhost:5000/jwtToken', {
+                fetch('https://assignment-11-server-dusky.vercel.app/jwtToken', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
