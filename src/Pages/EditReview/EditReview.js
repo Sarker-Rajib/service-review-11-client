@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 
 const EditReview = () => {
     const thisReview = useLoaderData();
@@ -25,7 +25,6 @@ const EditReview = () => {
         .then((data) => {
             if (data.modifiedCount > 0) {
                 alert('Succefully updated');
-                
             }
         })
     }

@@ -1,5 +1,5 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import useTitle from '../../Hooks/UseTitle/UseTitle';
@@ -7,6 +7,7 @@ import useTitle from '../../Hooks/UseTitle/UseTitle';
 const Login = () => {
     useTitle('Fx || Login');
     const { providerLogin, logIn, setLoading } = useContext(AuthContext);
+    const [error, setError] = useState();
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from.pathname || '/';
@@ -19,6 +20,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 navigate(from, { replace: true })
+                alert('login successful')
             })
             .catch(error => {
                 console.log(error);
@@ -36,9 +38,13 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                alert('Login Successful');
                 navigate(from, { replace: true })
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+                console.error(err)
+                setError(err.message)
+            })
             .finally(() => {
                 setLoading(false);
             })
@@ -56,6 +62,7 @@ const Login = () => {
                     <div className='pb-8'>
                         <label>Password</label>
                         <input name='password' type="password" placeholder="enter password" className="input w-full input-bordered" />
+                        <p className='text-red-600'>{error}</p>
                     </div>
                     <input className='btn w-full' type="Submit" />
                 </form>

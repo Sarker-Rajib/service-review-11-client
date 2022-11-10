@@ -4,6 +4,7 @@ import Main from "../../Layouts/Main/Main";
 import AddService from "../../Pages/AddService/AddService";
 import Blog from "../../Pages/Blog/Blog";
 import EditReview from "../../Pages/EditReview/EditReview";
+import Error from "../../Pages/Error/Error";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import MyReviews from "../../Pages/MyReviews/MyReviews";
@@ -66,5 +67,9 @@ export const router = createBrowserRouter([
                 element: <Register></Register>
             },
         ]
+    },
+    {
+        path: "*",
+        element: <Error></Error>
     }
 ])

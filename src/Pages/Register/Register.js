@@ -13,8 +13,8 @@ const Register = () => {
             photoURL: photoURL
         }
         updateUserProfile(profile)
-        .then(() => {})
-        .catch(err => console.error(err))
+            .then(() => { })
+            .catch(err => console.error(err))
     };
 
     const handleRegister = (e) => {
@@ -31,11 +31,12 @@ const Register = () => {
                 // const user = result.user;
                 form.reset();
                 handleUpdateProfile(name, photoURL)
+                alert('Successfully Registered');
             })
             .catch(err => console.error(err))
             .finally(() => {
                 setLoading(false);
-             })
+            })
     };
 
     return (

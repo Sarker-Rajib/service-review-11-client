@@ -5,6 +5,7 @@ import 'react-photo-view/dist/react-photo-view.css';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import { AuthContext } from '../../Context/AuthProvider';
 import useTitle from '../../Hooks/UseTitle/UseTitle';
+import { toast } from 'react-toastify';
 
 const DisplayService = () => {
     useTitle('Fx || Service Details');
@@ -44,7 +45,7 @@ const DisplayService = () => {
             .then(data => {
                 if (data.acknowledged === true) {
                     setviewDependency(data)
-                    alert('data added successfully')
+                    alert('Comment Added Successfully')
                     form.reset();
                 }
             })
